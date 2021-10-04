@@ -11,25 +11,37 @@ async def start(c, m):
     owner_username = owner.username if owner.username else 'Ns_bot_updates'
 
     # start text
-    text = f"""Hey! {m.from_user.mention(style='md')},
+    text = f"""🙋‍♂️Hey! {m.from_user.mention(style='md')},
 
 💡 ** I am Stylish Font Bot**
 
-`I can help you to get stylish fonts. Just send me some text and see magic.`
+`I can help you to get stylish fonts. Just send me some any text and see magic what I can do with it.`
 
-**👲 Maintained By:** {owner.mention(style='md')}
+**👲 Maintained By: @bryllbots**
 """
 
     # Buttons
     buttons = [
         [
-            InlineKeyboardButton('My Father 👨‍✈️', url=f"https://t.me/{owner_username}")
+            InlineKeyboardButton('My Father 👨‍✈️', url=f"https://telegram.me/bryllbots"),
+            InlineKeyboardButton('Update Channel', url=f"https://telegram.me/MyTestBotZ")
+        ],[
+            InlineKeyboardButton('Other Bots🤖', url=f"https://t.me/myTestbotz/15"),
+            InlineKeyboardButton('Share 📤', url=f"https://t.me/share/url?url=%F0%9F%99%8B%E2%80%8D%E2%99%82%20Hey%20Everyone%20%0A%0AToday%20I%20Just%20Found%20A%20Best%20Stylish%20Text%20Bot.%20This%20Bot%20Can%20Style%20any%20Text%0A%0A%F0%9F%A4%96%20Bot%20Link%20%3A%20%40bryll_urluploader_bot")
+        ],[
+            InlineKeyboardButton('Close ❌', callback_data='close')
         ]
     ]
     await m.reply_text(
         text=text,
         reply_markup=InlineKeyboardMarkup(buttons)
     )
+
+
+@Client.on_callback_query()
+async def cb_handler(bot, update):
+    if update.data == "close":
+       await update.message.delete()
 
 
 
